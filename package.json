@@ -1,0 +1,26 @@
+{
+  "name": "smart-advocate-api",
+  "version": "1.0.0",
+  "description": "Smart Advocate API",
+  "homepage": "https://github.com/nabeelimtiaz667/smartadvocate-api#readme",
+  "bugs": {
+    "url": "https://github.com/nabeelimtiaz667/smartadvocate-api/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabeelimtiaz667/smartadvocate-api.git"
+  },
+  "license": "ISC",
+  "author": "nabeelimtiaz667",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js"
+  },
+  "dependencies": {
+    "axios": "^1.12.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0"
+  }
+}
