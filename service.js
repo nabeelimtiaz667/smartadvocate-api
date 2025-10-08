@@ -1,5 +1,4 @@
 const axios = require('axios');
-const { AxiosInstance, AxiosRequestConfig } = axios;
 
 class ApiService {
     static token = '';
@@ -37,37 +36,26 @@ class ApiService {
     }
 
     async getToken() {
-        const config = {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
-
         const response = await this.axiosInstance.post(
             this.authEndpoint,
-            this.auth,
-            //   config
+            this.auth
         );
         if (response.status !== 200) {
+            console.log(response);
             throw new Error('Failed to authenticate and retrieve token');
         }
         return response.data;
     }
 
     async createCase(payload) {
-        const config = {
-            headers: {
-                Authorization: `Bearer ${ApiService.token}`,
-                'Content-Type': 'application/json',
-            },
-        };
-
         const response = await this.axiosInstance.post(
             this.createCaseEndpoint,
-            payload,
-            //   config
+            payload
         );
-
+        if (response.status !== 200) {
+            return { status: response.status, message: response.data?.message, meta: response.statusText };
+        }
+        console.log(response);
         return response.data;
     }
 
@@ -76,6 +64,7 @@ class ApiService {
         if (response.status !== 200) {
             return { status: response.status, message: response.data?.message, meta: response.statusText };
         }
+        console.log(response);
         return response.data;
     }
 }

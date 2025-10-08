@@ -17,7 +17,8 @@ const service = new apiService({ Username: process.env.sa_username, Password: pr
 
 // Routes
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    const content = OpeningResponse();
+    res.send(content);
 });
 
 app.get('/case-groups', async (req, res) => {
@@ -42,3 +43,12 @@ app.post('/create-case', async (req, res) => {
 app.listen(process.env.PORT, () => {
     console.log(`Server is running on ${process.env.PORT}`);
 });
+
+function OpeningResponse() {
+    return `
+        <div style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; font-family: cursive, sans, sans-serif;">
+            <p style="color: green; font-size: 5em;">API is Working.</p>
+            <p style="color: blue; font-size: 1.75em;">Make a request by hitting a url, and see the magic!</p>
+        </div>
+    `;
+}
